@@ -1,0 +1,73 @@
+[gd_scene load_steps=4 format=3 uid="uid://bqgip2slgvmfx"]
+
+[ext_resource type="Script" uid="uid://cykl5m6l6sxh2" path="res://hand_peace_1.gd" id="1_q7hrp"]
+[ext_resource type="Texture2D" uid="uid://sjqhdobypjpr" path="res://sprite/glowCircle.png" id="1_qp5s1"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_q7hrp"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Node2D2" type="Node2D" parent="."]
+position = Vector2(440, 202)
+
+[node name="Hand-peace1" type="RigidBody2D" parent="Node2D2"]
+position = Vector2(49, 35)
+gravity_scale = 0.0
+script = ExtResource("1_q7hrp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D2/Hand-peace1"]
+shape = SubResource("CircleShape2D_q7hrp")
+
+[node name="Sprite2D" type="Sprite2D" parent="Node2D2/Hand-peace1"]
+scale = Vector2(0.02, 0.02)
+texture = ExtResource("1_qp5s1")
+
+[node name="Hand-peace2" type="RigidBody2D" parent="Node2D2"]
+position = Vector2(33, 23)
+gravity_scale = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D2/Hand-peace2"]
+shape = SubResource("CircleShape2D_q7hrp")
+
+[node name="Sprite2D" type="Sprite2D" parent="Node2D2/Hand-peace2"]
+scale = Vector2(0.02, 0.02)
+texture = ExtResource("1_qp5s1")
+
+[node name="PinJoint2D" type="PinJoint2D" parent="Node2D2"]
+position = Vector2(41, 29)
+node_a = NodePath("../Hand-peace1")
+node_b = NodePath("../Hand-peace2")
+
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2(440, 202)
+
+[node name="Hand-peace1" type="RigidBody2D" parent="Node2D"]
+gravity_scale = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/Hand-peace1"]
+shape = SubResource("CircleShape2D_q7hrp")
+
+[node name="Sprite2D" type="Sprite2D" parent="Node2D/Hand-peace1"]
+scale = Vector2(0.02, 0.02)
+texture = ExtResource("1_qp5s1")
+
+[node name="Hand-peace2" type="RigidBody2D" parent="Node2D"]
+position = Vector2(16, 12)
+gravity_scale = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/Hand-peace2"]
+shape = SubResource("CircleShape2D_q7hrp")
+
+[node name="Sprite2D" type="Sprite2D" parent="Node2D/Hand-peace2"]
+scale = Vector2(0.02, 0.02)
+texture = ExtResource("1_qp5s1")
+
+[node name="PinJoint2D" type="PinJoint2D" parent="Node2D"]
+position = Vector2(8, 6)
+node_a = NodePath("../Hand-peace1")
+node_b = NodePath("../Hand-peace2")
+
+[node name="PinJoint2D2" type="PinJoint2D" parent="."]
+position = Vector2(465, 220)
+node_a = NodePath("../Node2D2/Hand-peace2")
+node_b = NodePath("../Node2D/Hand-peace2")
