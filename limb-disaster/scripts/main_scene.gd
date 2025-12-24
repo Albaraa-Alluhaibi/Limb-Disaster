@@ -16,6 +16,7 @@ func _on_score_timer_timeout():
 	score += 1
 	
 func _on_start_timer_timeout():
+	print("Test")
 	$MobTimer.start()
 	$ScoreTimer.start()
 	print("Test")
