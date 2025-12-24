@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Limb Disaster"
-run/main_scene="uid://doond6e2kkys0"
+run/main_scene="uid://3m5itych6nvw"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
 
