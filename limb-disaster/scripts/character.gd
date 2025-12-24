@@ -1,4 +1,5 @@
 extends Area2D
+signal hit #player will send out signal when it collides with enemy or surface
 
 @export var speed = 400 #how fast player moves in pixels per second
 var screen_size #size of game window
@@ -11,6 +12,12 @@ func _ready():
 	screen_size = get_viewport_rect().size
 	#hide the player
 	#hide()
+	
+#used to reset the player when starting a new game
+func start(pos):
+	position = pos
+	show()
+	$CollisionShpe2D.disabled = false
 	
 #_process() function is called every frame and updates the elements within the game
 func _process(delta):
@@ -46,3 +53,9 @@ func _process(delta):
 	position += velocity*delta
 	position = position.clamp(Vector2.ZERO, screen_size)
 	return
+
+func _on_body_entered(body):
+	hide() #player disappears after being
+	hit.emit()#signal is emitted when player hits enemy or obstacle
+	#disable collision since we can't we can't change physics properties on a physics callback
+	$CollisionShape2D.set_deferred("disabled", true)
